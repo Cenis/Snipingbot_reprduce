@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/toastr.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+<body ng-app="myapp" ng-controller="ctrl" >
+	<div class="top-bar1 text-center" style="box-shadow:0px 2px 4px #efefef; background-color:#efefef; padding:3px 12px; border-bottom:1px solid #efefef">
+		<a href="#" ng-click="reloadWindow()" class="img" style=" display:inline-block;"> <img style="width:125px; " src="../../icons/logo.png" /> </a>
+	</div>
+	<div style="padding:5px 25px 20px 25px; margin-top:10px;">
+		<div>
+			<div class="row" ng-hide="license">
+				<div class="col-md-8 offset-md-2" style=" padding:20px; padding-top:0px;">
+					<div class="registration-form" style="margin-top:0px; box-shadow:none">
+						<form ng-submit="verifyLicense()">
+							<div class="form-group">
+								<label >License Key</label>
+								<input type="text" class="form-control" ng-model="f1.license_key" placeholder="Enter Your License Key" autocomplete="off" required>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block" ng-class="{'disabled':f1.loading}" style="line-height:30px;"> <span ng-hide="f1.loading"> SUBMIT </span> <span ng-show="f1.loading"> Loading... </span> </button>
+						</form>
+						<div style="margin-top:20px">
+							<h6 style="font-size:16px; font-weight:bold;" class="text-center"> Need a license key? <a href="{{checkoutLink}}" target="_blank" style="text-decoration:none; margin-left:10px;">  Order Now  </a> </h6>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div ng-show="license" class="user-info">
+				<div class="form-group text-center">
+					<button class="btn btn-primary" ng-click="startProcess();" style="width:200px"> Start Process </button>
+				</div>
+				<div class="form-group">
+					<a href="#" style="float:right" ng-click="Logout()"> Logout </a>
+				</div>
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" class="form-control" readonly ng-value="license.order.customer.first_name +' '+license.order.customer.last_name">
+				</div>
+
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" class="form-control" readonly ng-value="license.order.customer.email">
+				</div>
+
+				<div class="form-group">
+					<label>License Key</label>
+					<input type="text" class="form-control" readonly ng-value="license.license_key">
+				</div>
+
+				<div class="form-group">
+					<label>Price</label>
+					<input type="text" class="form-control" readonly ng-value="license.order.total_price">
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js">
+</script>
+<script src="js/chart.min.js">
+</script>
+<script src="js/angular.min.js">
+</script>
+<script src="js/sortable.js">
+</script>
+<script src="js/papaparse.min.js">
+</script>
+<script src="js/toastr.min.js">
+</script>
+<script src="js/bootstrap.min.js">
+</script>
+<script src="js/browser_action.js">
+</script>
+
+</html>
